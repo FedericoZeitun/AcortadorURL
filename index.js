@@ -6,15 +6,13 @@ const mongoose = require('mongoose')
 const app = express()
 
 require('dotenv').config({path: 'variables.env'})
-console.log(process.env.DB_URL)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
 mongoose.Promise = global.Promise
 mongoose.connect (process.env.DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+    useNewUrlParser: true
 })
 
 app.set('view engine', 'pug')
